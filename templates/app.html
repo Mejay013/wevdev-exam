@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if error %}
+<div class="alert alert-danger" role="alert">
+  {{ error }}
+</div>
+{% endif %}
+
 <form class="from" action="{{url_for('main.add_appeal')}}" method="POST">
   <label  class="col-sm-2 col-form-label ">Пользователь:</label>
   <input type="text" name="appeal_user" class="form-control"  readonly="readonly" value="{{user.query.filter_by(id = current_user.id).first().user_fio}}" >

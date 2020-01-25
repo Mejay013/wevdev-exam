@@ -1,3 +1,4 @@
+домен:http://webdev-exam-2019-2-jt6h7.std-871.ist.mospolytech.ru/
 Данные для авторизации:
 
 Админ:

@@ -32,7 +32,7 @@
   </div>
   {% if current_user.role == 1 %}
   <label for="sel1">Сообщение:</label>
- <input type="text" name="new_message"  value="{{appeal.query.filter_by(id = appeal.id).first().message_appeal}}" class="form-control" readonly="readonly" required >
+ <input type="text" name="new_message"  value="{{appeal.query.filter_by(id = appeal.id).first().message_appeal}}" class="form-control"  required >
  {% endif %}
  <input type="submit" class="btn btn-primary" >
 </form>

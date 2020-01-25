@@ -32,7 +32,7 @@ def set(id):
             appeal_status = Appeal_status
             user = User
             role = Role
-            error = "Обращение уже существует"
+            error = "Изменения уже приступили в силу"
             return render_template('app.html',type_appeal=type_appeal,appeal_status=appeal_status,user=user,role=role,error=error)
         db.session.delete(bad_appeal)
         red_appeal = Appeal(date=appeal_date , user=appeal_user ,type_appeal=new_appeal_type,status_appeal=new_appeal_status ,message_appeal = new_message)

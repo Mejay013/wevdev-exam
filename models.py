@@ -4,7 +4,7 @@ from .app import db
 
 class Appeal(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date = db.Column(db.DateTime, nullable=True, default=datetime.utcnow)
     user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     type_appeal = db.Column(db.Integer, db.ForeignKey('appeal_type.id'), nullable=False)
     status_appeal = db.Column(db.Integer, db.ForeignKey('appeal_status.id'), nullable=False)

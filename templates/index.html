@@ -1,4 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
-Index
+<table class="table">
+    <thead>
+        <tr>
+            <td>№</td>
+            <td>Дата</td>
+            <td>Пользователь</td>
+            <td>Тип</td>
+            <td>Статус</td>
+            <td>Сообщение</td>
+            {% if current_user.role == 1 or current_user.role == 2 %}
+            <td>Действия</td>
+            {% endif %}
+          </tr>
+    </thead>
+    <tbody>
+    {% for appeals in appeal_list %}
+    <tr>
+      <td>{{appeals.id}}</td>
+      <td>25.01.20</td>
+      <td>{{user.query.filter_by(id = appeals.user).first().user_fio}}</td>
+      <td>{{type_appeal.query.filter_by(id = appeals.type_appeal).first().type_appeal}}</td>
+      <td>{{appeal_status.query.filter_by(id = appeals.status_appeal).first().status_appeal}}</td>
+      <td>{{appeals.message_appeal}}</td>
+      {% if current_user.role == 1 %}
+        <td>
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Действия
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item" href='#'>Редактировать</a>
+          <a class="dropdown-item" href="#">Удалить</a>
+        </div>
+      </div>
+   </td>
+    {% endif %}
+    {% if current_user.role == 2 %}
+        <td>
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Действия
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item" href='#'>Редактировать</a>
+        </div>
+      </div>
+   </td>
+    {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <p><a><button type="button" class="btn btn-success">Добавить обращение</button></a></p>
 {% endblock %}

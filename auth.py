@@ -49,9 +49,9 @@ def reg():
             db.session.add(new_user)
             db.session.commit()
         
-            return redirect(url_for('main.index'))
+            return redirect(url_for('auth.login'))
         else:
-            error = 'Bad values'
+            error = 'Некорректные данные'
             return render_template('login.html',error=error)
     return render_template('login.html')
 

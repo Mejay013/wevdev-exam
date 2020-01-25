@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form class="from" action="{{url_for('main.set', id = appeal.id)}}" method="POST">
+  <label  class="col-sm-2 col-form-label ">Пользователь:</label>
+  <input type="text" name="set_user" class="form-control" value="{{user.query.filter_by(id = appeal.user).first().user_fio}}" required autofocus>
+  <div class="form-group">
+  <label for="sel1">Тип обращения:</label>
+  <select class="form-control" name="set_type" id="sel1" >
+    <option>{{type_appeal.query.filter_by(id = 1).first().type_appeal}}</option>
+    <option>{{type_appeal.query.filter_by(id = 2).first().type_appeal}}</option>
+    <option>{{type_appeal.query.filter_by(id = 3).first().type_appeal}}</option>
+    <option>{{type_appeal.query.filter_by(id = 4).first().type_appeal}}</option>
+    <option>{{type_appeal.query.filter_by(id = 5).first().type_appeal}}</option>
+  </select>
+</div>
+  <label  class="col-sm-2 col-form-label ">Статус обращения:</label>
+  <input type="text" name="set_status" class="form-control" value="{{appeal_status.query.filter_by(id = appeal.status_appeal).first().status_appeal}}" required >
+</form>
+{% endblock %}

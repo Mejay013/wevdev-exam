@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form class="from" action="{{url_for('main.add_appeal')}}" method="POST">
+  <label  class="col-sm-2 col-form-label ">Пользователь:</label>
+  <input type="text" name="appeal_user" class="form-control"  readonly="readonly" value="{{user.query.filter_by(id = current_user.id).first().user_fio}}" >
+  <div class="form-group">
+  <label for="sel1">Тип обращения:</label>
+  <select class="form-control" name="appeal_type" id="sel1" >
+    <option value ='1' >{{type_appeal.query.filter_by(id = 1).first().type_appeal}}</option>
+    <option value ='2'>{{type_appeal.query.filter_by(id = 2).first().type_appeal}}</option>
+    <option value ='3'>{{type_appeal.query.filter_by(id = 3).first().type_appeal}}</option>
+    <option value ='4'>{{type_appeal.query.filter_by(id = 4).first().type_appeal}}</option>
+    <option value ='5'>{{type_appeal.query.filter_by(id = 5).first().type_appeal}}</option>
+  </select>
+</div>
+<label for="sel1">Сообщение:</label>
+<input type="text" name="appeal_message" class="form-control" required >
+<input type="submit" class="btn btn-primary" value="Создать обращение">
+{% endblock %}
